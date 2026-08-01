@@ -27,3 +27,5 @@ shape = SubResource("CircleShape2D_dy322")
 position = Vector2(-65, 4)
 scale = Vector2(1.3831521, 1)
 polygon = PackedVector2Array(400, -200, 400, 200, 0, 0)
+
+[connection signal="body_entered" from="VisionPivot/VisionCone" to="." method="_on_vision_cone_body_entered"]

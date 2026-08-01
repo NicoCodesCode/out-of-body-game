@@ -6,7 +6,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_dovo2"]
 radius = 61.188232
 
-[node name="Player" type="CharacterBody2D" unique_id=418808476]
+[node name="Player" type="CharacterBody2D" unique_id=418808476 groups=["player"]]
 script = ExtResource("1_dovo2")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1471599668]
