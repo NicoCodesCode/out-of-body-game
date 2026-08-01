@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://doe1ylf62u5yo"]
+
+[ext_resource type="Texture2D" uid="uid://c707pcy17g3h7" path="res://icon.svg" id="1_3gofp"]
+[ext_resource type="Script" uid="uid://vdnnjmb1xmnb" path="res://scenes/spirit/spirit.gd" id="1_dy322"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dy322"]
+radius = 60.299255
+
+[node name="Spirit" type="CharacterBody2D" unique_id=1294832527 node_paths=PackedStringArray("vision_pivot", "sprite")]
+script = ExtResource("1_dy322")
+vision_pivot = NodePath("VisionPivot")
+sprite = NodePath("Sprite2D")
+speed = 300.0
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=531150825]
+modulate = Color(2.454227, 0, 0, 1)
+texture = ExtResource("1_3gofp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=880418164]
+shape = SubResource("CircleShape2D_dy322")
+
+[node name="VisionPivot" type="Node2D" parent="." unique_id=1801341749]
+
+[node name="VisionCone" type="Area2D" parent="VisionPivot" unique_id=163668467]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="VisionPivot/VisionCone" unique_id=33934948]
+position = Vector2(-65, 4)
+scale = Vector2(1.3831521, 1)
+polygon = PackedVector2Array(400, -200, 400, 200, 0, 0)

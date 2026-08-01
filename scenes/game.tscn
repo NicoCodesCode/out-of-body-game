@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://bc5c5umy3y0t4" path="res://scenes/player/player.tscn" id="1_uwrxv"]
 [ext_resource type="PackedScene" uid="uid://cx7mivt6w4kv6" path="res://scenes/safe_zone/safe_zone.tscn" id="2_yqjtg"]
+[ext_resource type="PackedScene" uid="uid://doe1ylf62u5yo" path="res://scenes/spirit/spirit.tscn" id="3_lnu2h"]
 
 [node name="Game" type="Node" unique_id=178873775]
 
@@ -10,6 +11,17 @@ position = Vector2(710, 430)
 
 [node name="SafeZone" parent="." unique_id=1382983177 instance=ExtResource("2_yqjtg")]
 position = Vector2(258, 223)
+
+[node name="Spirit" parent="." unique_id=1294832527 node_paths=PackedStringArray("marker_a", "marker_b") instance=ExtResource("3_lnu2h")]
+position = Vector2(155, 838)
+marker_a = NodePath("../MarkerA")
+marker_b = NodePath("../MarkerB")
+
+[node name="MarkerA" type="Marker2D" parent="." unique_id=1673967525]
+position = Vector2(155, 838)
+
+[node name="MarkerB" type="Marker2D" parent="." unique_id=1781101056]
+position = Vector2(1255, 838)
 
 [connection signal="body_entered" from="SafeZone" to="Player" method="_on_safe_zone_body_entered"]
 [connection signal="body_exited" from="SafeZone" to="Player" method="_on_safe_zone_body_exited"]
