@@ -1,11 +1,13 @@
 [gd_scene format=3 uid="uid://cx7mivt6w4kv6"]
 
+[ext_resource type="Script" uid="uid://40k24jhvj83i" path="res://scenes/safe_zone/safe_zone.gd" id="1_8l200"]
 [ext_resource type="Texture2D" uid="uid://c707pcy17g3h7" path="res://icon.svg" id="1_qkkdg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8l200"]
 size = Vector2(332, 310)
 
 [node name="SafeZone" type="Area2D" unique_id=1382983177]
+script = ExtResource("1_8l200")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=292583019]
 modulate = Color(1, 1, 0, 1)
@@ -13,3 +15,6 @@ texture = ExtResource("1_qkkdg")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=247254386]
 shape = SubResource("RectangleShape2D_8l200")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

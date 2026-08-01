@@ -7,7 +7,7 @@ var MAX_PRESENCE := 100.0
 var _soul_presence := MAX_PRESENCE
 var _drain_rate := 10.0
 var _recharge_rate := 30.0
-var _is_in_safe_zone := false
+var is_in_safe_zone := false
 
 
 func _physics_process(delta: float) -> void:
@@ -16,7 +16,7 @@ func _physics_process(delta: float) -> void:
 	
 	move_and_slide()
 	
-	if _is_in_safe_zone:
+	if is_in_safe_zone:
 		_soul_presence = clampf(_soul_presence + _recharge_rate * delta, 0.0, MAX_PRESENCE)
 	else:
 		_soul_presence = clampf(_soul_presence - _drain_rate * delta, 0.0, MAX_PRESENCE)
@@ -26,13 +26,3 @@ func _physics_process(delta: float) -> void:
 	
 	if _soul_presence == 0:
 		get_tree().reload_current_scene()
-
-
-func _on_safe_zone_body_entered(body: Node2D) -> void:
-	if body == self:
-		_is_in_safe_zone = true
-
-
-func _on_safe_zone_body_exited(body: Node2D) -> void:
-	if body == self:
-		_is_in_safe_zone = false
