@@ -23,6 +23,9 @@ func _physics_process(delta: float) -> void:
 	
 	modulate.a = _soul_presence / 100
 	print("Soul Presence: ", _soul_presence)
+	
+	if _soul_presence == 0:
+		get_tree().reload_current_scene()
 
 
 func _on_safe_zone_body_entered(body: Node2D) -> void:
