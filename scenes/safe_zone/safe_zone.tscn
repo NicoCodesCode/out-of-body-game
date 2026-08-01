@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://cx7mivt6w4kv6"]
+
+[ext_resource type="Texture2D" uid="uid://c707pcy17g3h7" path="res://icon.svg" id="1_qkkdg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8l200"]
+size = Vector2(332, 310)
+
+[node name="SafeZone" type="Area2D" unique_id=1382983177]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=292583019]
+texture = ExtResource("1_qkkdg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=247254386]
+shape = SubResource("RectangleShape2D_8l200")
