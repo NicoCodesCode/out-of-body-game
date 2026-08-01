@@ -5,8 +5,8 @@ const SPEED = 400.0
 
 var MAX_PRESENCE := 100.0
 var _soul_presence := MAX_PRESENCE
-var _drain_rate := 5.0
-var _recharge_rate := 20.0
+var _drain_rate := 10.0
+var _recharge_rate := 30.0
 var _is_in_safe_zone := false
 
 
@@ -21,6 +21,7 @@ func _physics_process(delta: float) -> void:
 	else:
 		_soul_presence = clampf(_soul_presence - _drain_rate * delta, 0.0, MAX_PRESENCE)
 	
+	modulate.a = _soul_presence / 100
 	print("Soul Presence: ", _soul_presence)
 
 
