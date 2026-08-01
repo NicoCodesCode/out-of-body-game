@@ -37,4 +37,5 @@ func _physics_process(_delta: float) -> void:
 
 func _on_vision_cone_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
-		get_tree().reload_current_scene()
+		print("Caught by enemy!")
+		get_tree().call_deferred("reload_current_scene")
