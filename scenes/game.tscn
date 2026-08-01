@@ -6,7 +6,7 @@
 [node name="Game" type="Node" unique_id=178873775]
 
 [node name="Player" parent="." unique_id=418808476 instance=ExtResource("1_uwrxv")]
-position = Vector2(930, 463)
+position = Vector2(710, 430)
 
 [node name="SafeZone" parent="." unique_id=1382983177 instance=ExtResource("2_yqjtg")]
 position = Vector2(258, 223)

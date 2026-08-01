@@ -14,3 +14,6 @@ texture = ExtResource("2_gmlin")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1239180572]
 shape = SubResource("RectangleShape2D_lvxji")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=366561385]
+position_smoothing_enabled = true
