@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 
-const SPEED = 400.0
+const SPEED = 150.0
 
 var MAX_PRESENCE := 100.0
 var _soul_presence := MAX_PRESENCE
@@ -16,13 +16,12 @@ func _physics_process(delta: float) -> void:
 	
 	move_and_slide()
 	
-	if is_in_safe_zone:
-		_soul_presence = clampf(_soul_presence + _recharge_rate * delta, 0.0, MAX_PRESENCE)
-	else:
-		_soul_presence = clampf(_soul_presence - _drain_rate * delta, 0.0, MAX_PRESENCE)
-	
-	modulate.a = _soul_presence / 100
-	print("Soul Presence: ", _soul_presence)
+	#if is_in_safe_zone:
+		#_soul_presence = clampf(_soul_presence + _recharge_rate * delta, 0.0, MAX_PRESENCE)
+	#else:
+		#_soul_presence = clampf(_soul_presence - _drain_rate * delta, 0.0, MAX_PRESENCE)
+	#
+	#print("Soul Presence: ", _soul_presence)
 	
 	if _soul_presence == 0:
 		get_tree().reload_current_scene()
