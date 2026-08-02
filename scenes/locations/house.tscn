@@ -7,8 +7,10 @@
 [ext_resource type="Texture2D" uid="uid://buedfcjmfwku1" path="res://assets/art/Home/Bed/Bed-03.png" id="5_svqtx"]
 [ext_resource type="Texture2D" uid="uid://dmjudv5v6del0" path="res://assets/art/Home/Home-03.png" id="6_pjf7i"]
 [ext_resource type="Texture2D" uid="uid://cxb00pcdkuvly" path="res://assets/art/Home/Mirror/m-02-f-1.png" id="7_gvthu"]
+[ext_resource type="PackedScene" uid="uid://buaw8een2pe2v" path="res://scenes/actionable.tscn" id="8_0m7yu"]
 [ext_resource type="Texture2D" uid="uid://g31smroy1vj3" path="res://assets/art/Home/Mirror/m-03-f-2.png" id="8_y6qdw"]
 [ext_resource type="Texture2D" uid="uid://dv21nysl2efjy" path="res://assets/art/Home/Mirror/m-03-f-1.png" id="9_0m7yu"]
+[ext_resource type="Resource" uid="uid://csl00wnrg6syq" path="res://dialogues/house.dialogue" id="9_4q4so"]
 [ext_resource type="Texture2D" uid="uid://7ytrj2a53hoa" path="res://assets/art/Home/Mirror/m-01-f-2.png" id="10_4q4so"]
 [ext_resource type="Texture2D" uid="uid://by2uhghfm02i5" path="res://assets/art/Home/Mirror/m-01-f-1.png" id="11_vk74t"]
 
@@ -87,9 +89,6 @@ size = Vector2(46, 7)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wb7ym"]
 size = Vector2(16, 5)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_3wvpa"]
-size = Vector2(42, 6)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_40bbr"]
 size = Vector2(28, 9)
 
@@ -123,17 +122,26 @@ size = Vector2(84.00391, 19.96875)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k5vgw"]
 size = Vector2(45.001953, 85)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oxxgg"]
+size = Vector2(28, 22)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_l277p"]
+radius = 16.0
+height = 62.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3wvpa"]
+size = Vector2(42, 6)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cxdi4"]
+radius = 23.0
+height = 84.0
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d3ha2"]
 size = Vector2(42, 7.75)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_oxxgg"]
-size = Vector2(28, 53)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_l277p"]
-size = Vector2(38, 81)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_cxdi4"]
-size = Vector2(41, 86)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3ignn"]
+radius = 20.5
+height = 92.0
 
 [node name="House" type="Node2D" unique_id=1268704300]
 
@@ -273,11 +281,6 @@ position = Vector2(-84, -15.5)
 shape = SubResource("RectangleShape2D_wb7ym")
 debug_color = Color(1, 0.6, 0.69803923, 0.41960785)
 
-[node name="CollisionShape2D7" type="CollisionShape2D" parent="Furniture" unique_id=1982630456]
-position = Vector2(155, -14)
-shape = SubResource("RectangleShape2D_3wvpa")
-debug_color = Color(1, 0.6, 0.69803923, 0.41960785)
-
 [node name="CollisionShape2D8" type="CollisionShape2D" parent="Furniture" unique_id=2032476510]
 position = Vector2(-180, -199.5)
 shape = SubResource("RectangleShape2D_40bbr")
@@ -333,11 +336,6 @@ position = Vector2(-178.50098, 144.5)
 shape = SubResource("RectangleShape2D_k5vgw")
 debug_color = Color(1, 0.6, 0.69803923, 0.41960785)
 
-[node name="CollisionShape2D19" type="CollisionShape2D" parent="Furniture" unique_id=968327495]
-position = Vector2(-5, -12.875)
-shape = SubResource("RectangleShape2D_d3ha2")
-debug_color = Color(1, 0.6, 0.69803923, 0.41960785)
-
 [node name="Ceilings" type="Sprite2D" parent="." unique_id=75450972]
 z_index = 2
 scale = Vector2(2, 2)
@@ -345,19 +343,28 @@ texture = ExtResource("6_pjf7i")
 
 [node name="Mirrors" type="Node2D" parent="." unique_id=1217049182]
 
-[node name="BathroomMirror" type="Area2D" parent="Mirrors" unique_id=623678403]
+[node name="BathroomMirror" type="StaticBody2D" parent="Mirrors" unique_id=1035151767]
 
 [node name="Sprite2D" type="Sprite2D" parent="Mirrors/BathroomMirror" unique_id=1649641752]
 position = Vector2(-130, -238)
 scale = Vector2(2, 2)
 texture = ExtResource("7_gvthu")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Mirrors/BathroomMirror" unique_id=1047190615]
-position = Vector2(-131, -221.5)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Mirrors/BathroomMirror" unique_id=1138414845]
+position = Vector2(-130, -238)
 shape = SubResource("RectangleShape2D_oxxgg")
+debug_color = Color(1, 0.6, 0.69803923, 0.41960785)
+
+[node name="Actionable" parent="Mirrors/BathroomMirror" unique_id=170789532 instance=ExtResource("8_0m7yu")]
+dialogue_resource = ExtResource("9_4q4so")
+dialogue_start = "bathroom_mirror"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Mirrors/BathroomMirror/Actionable" unique_id=1047190615]
+position = Vector2(-130, -226)
+shape = SubResource("CapsuleShape2D_l277p")
 debug_color = Color(0, 0.6, 0, 0.41960785)
 
-[node name="EntranceMirror" type="Area2D" parent="Mirrors" unique_id=1545456235]
+[node name="EntranceMirror" type="StaticBody2D" parent="Mirrors" unique_id=863532225]
 
 [node name="Broken" type="Sprite2D" parent="Mirrors/EntranceMirror" unique_id=1845811712]
 position = Vector2(155, -72)
@@ -370,12 +377,26 @@ position = Vector2(155, -72)
 scale = Vector2(2, 2)
 texture = ExtResource("9_0m7yu")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Mirrors/EntranceMirror" unique_id=1522278316]
-position = Vector2(152, -46.5)
-shape = SubResource("RectangleShape2D_l277p")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Mirrors/EntranceMirror" unique_id=1982630456]
+position = Vector2(155, -14)
+shape = SubResource("RectangleShape2D_3wvpa")
+debug_color = Color(1, 0.6, 0.69803923, 0.41960785)
+
+[node name="Actionable" parent="Mirrors/EntranceMirror" unique_id=68764116 instance=ExtResource("8_0m7yu")]
+dialogue_resource = ExtResource("9_4q4so")
+dialogue_start = "entrance_mirror"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Mirrors/EntranceMirror/Actionable" unique_id=1522278316]
+position = Vector2(155, -45)
+shape = SubResource("CapsuleShape2D_cxdi4")
 debug_color = Color(0, 0.6, 0, 0.41960785)
 
-[node name="FullLengthMirror" type="Area2D" parent="Mirrors" unique_id=1457159872]
+[node name="FullLengthMirror" type="StaticBody2D" parent="Mirrors" unique_id=1529715403]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Mirrors/FullLengthMirror" unique_id=968327495]
+position = Vector2(-5, -12.875)
+shape = SubResource("RectangleShape2D_d3ha2")
+debug_color = Color(1, 0.6, 0.69803923, 0.41960785)
 
 [node name="Broken" type="Sprite2D" parent="Mirrors/FullLengthMirror" unique_id=775152639]
 position = Vector2(-5, -50)
@@ -388,7 +409,11 @@ position = Vector2(-5, -50)
 scale = Vector2(2, 2)
 texture = ExtResource("11_vk74t")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Mirrors/FullLengthMirror" unique_id=265236985]
+[node name="Actionable" parent="Mirrors/FullLengthMirror" unique_id=1424829567 instance=ExtResource("8_0m7yu")]
+dialogue_resource = ExtResource("9_4q4so")
+dialogue_start = "full_length_mirror"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Mirrors/FullLengthMirror/Actionable" unique_id=265236985]
 position = Vector2(-5.5, -47)
-shape = SubResource("RectangleShape2D_cxdi4")
+shape = SubResource("CapsuleShape2D_3ignn")
 debug_color = Color(0, 0.6, 0, 0.41960785)
