@@ -10,10 +10,11 @@ if not State.has_seen_bathroom_mirror_dialogue:
 	Instead, you're looking down a long, dark room that definitely shouldn't be there.
 	Your brain suddenly suggests that you reach inside.
 	
-	set State.has_seen_bathroom_mirror_dialogue = true
+	$> State.has_seen_bathroom_mirror_dialogue = true
 
 Stick your hand in and probably risk your life?
 - My life isn't worth preserving
+	$> State.is_about_to_enter_bathroom_mirror.emit()
 	You reach out, and your hand slips right through the glass.
 	It feels unnatural—like cold, wet silk.
 	...
@@ -35,7 +36,7 @@ if not State.has_seen_entrance_mirror_dialogue:
 	Honestly, you can't remember if this mirror was always here, which is a great sign for your mental stability.
 	It's like your memories are starting to blur together.
 	You really need to hurry up and find an exit before you forget your own name.
-	set State.has_seen_entrance_mirror_dialogue = true
+	$> State.has_seen_entrance_mirror_dialogue = true
 
 What was your name again?
 
@@ -55,7 +56,7 @@ if not State.has_seen_full_length_mirror_dialogue:
 	How do you get back into it?
 	You summon your little to non-existent intelligence to ponder the mechanics of soul-reentry.
 	To no one's surprise, you come up with nothing.
-	set State.has_seen_full_length_mirror_dialogue = true
+	$> State.has_seen_full_length_mirror_dialogue = true
 
 You decide to stop thinking before your brain hurts and keep looking around.
 

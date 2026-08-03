@@ -13,7 +13,8 @@
 [ext_resource type="Resource" uid="uid://csl00wnrg6syq" path="res://dialogues/house.dialogue" id="9_4q4so"]
 [ext_resource type="Texture2D" uid="uid://7ytrj2a53hoa" path="res://assets/art/Home/Mirror/m-01-f-2.png" id="10_4q4so"]
 [ext_resource type="Texture2D" uid="uid://by2uhghfm02i5" path="res://assets/art/Home/Mirror/m-01-f-1.png" id="11_vk74t"]
-[ext_resource type="AudioStream" uid="uid://dy5dqwwlk843u" path="res://assets/music/shattered-glass.ogg" id="14_4q4so"]
+[ext_resource type="AudioStream" uid="uid://dy5dqwwlk843u" path="res://assets/sound/music/shattered-glass.ogg" id="14_4q4so"]
+[ext_resource type="Script" uid="uid://bn1fes78yg6ac" path="res://scenes/locations/house_music.gd" id="15_vk74t"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_muy41"]
 size = Vector2(87, 59)
@@ -419,7 +420,8 @@ position = Vector2(-5.5, -47)
 shape = SubResource("CapsuleShape2D_3ignn")
 debug_color = Color(0, 0.6, 0, 0.41960785)
 
-[node name="Music" type="AudioStreamPlayer" parent="." unique_id=1285025663]
+[node name="HouseMusic" type="AudioStreamPlayer" parent="." unique_id=1285025663]
 stream = ExtResource("14_4q4so")
 autoplay = true
 bus = &"Music"
+script = ExtResource("15_vk74t")
