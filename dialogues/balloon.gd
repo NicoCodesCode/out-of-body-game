@@ -55,6 +55,9 @@ var dialogue_line: DialogueLine:
 ## A cooldown timer for delaying the balloon hide when encountering a mutation.
 var mutation_cooldown: Timer = Timer.new()
 
+## Used to throttle the typing sound
+var letters_since_last_sound := 0
+
 ## The base balloon anchor
 @onready var balloon: Control = %Balloon
 
@@ -212,6 +215,19 @@ func _on_balloon_gui_input(event: InputEvent) -> void:
 
 func _on_responses_menu_response_selected(response: DialogueResponse) -> void:
 	next(response.next_id)
+
+
+func _on_dialogue_label_spoke(letter: String, _letter_index: int, _speed: float) -> void:
+	if letter.strip_edges() == "":
+		return
+	
+	letters_since_last_sound += 1
+	if letters_since_last_sound < 6:
+		return
+	letters_since_last_sound = 0
+	
+	audio_stream_player.pitch_scale = randf_range(0.9, 1.1)
+	audio_stream_player.play()
 
 
 #endregion
