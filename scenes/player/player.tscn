@@ -30,4 +30,4 @@ shape = SubResource("CircleShape2D_gmlin")
 debug_color = Color(1, 0.6, 0, 0.41960785)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1247411371]
-zoom = Vector2(3.5, 3.5)
+zoom = Vector2(3, 3)

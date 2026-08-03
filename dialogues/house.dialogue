@@ -7,7 +7,7 @@ if not State.has_seen_bathroom_mirror_dialogue:
 	...
 	What is this?
 	You were expecting your own face, which would have been bad enough.
-	Instead, you're looking down a long, dark room that definitely shouldn't be there.
+	Instead, you're looking down a long, dark hallway that definitely shouldn't be there.
 	Your brain suddenly suggests that you reach inside.
 	
 	$> State.has_seen_bathroom_mirror_dialogue = true

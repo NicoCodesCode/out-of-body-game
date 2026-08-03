@@ -35,6 +35,11 @@ func _physics_process(delta: float) -> void:
 	_manage_soul_presence(delta)
 
 
+func _stop_player() -> void:
+	velocity = Vector2.ZERO
+	set_physics_process(false)
+
+
 func _manage_soul_presence(delta: float) -> void:
 	if is_in_house:
 		return
@@ -51,9 +56,12 @@ func _manage_soul_presence(delta: float) -> void:
 
 
 func _on_dialogue_started(_resource: DialogueResource) -> void:
-	velocity = Vector2.ZERO
-	set_physics_process(false)
+	_stop_player()
 
 
 func _on_dialogue_ended(_resource: DialogueResource) -> void:
 	set_physics_process(true)
+
+
+func _on_spirit_player_caught() -> void:
+	_stop_player()
