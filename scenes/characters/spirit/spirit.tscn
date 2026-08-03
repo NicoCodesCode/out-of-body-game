@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://doe1ylf62u5yo"]
 
 [ext_resource type="Texture2D" uid="uid://c707pcy17g3h7" path="res://icon.svg" id="1_3gofp"]
-[ext_resource type="Script" uid="uid://vdnnjmb1xmnb" path="res://scenes/spirit/spirit.gd" id="1_dy322"]
+[ext_resource type="Script" uid="uid://vdnnjmb1xmnb" path="res://scenes/characters/spirit/spirit.gd" id="1_dy322"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dy322"]
 radius = 10.770329

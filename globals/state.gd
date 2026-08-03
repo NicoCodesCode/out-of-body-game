@@ -5,6 +5,8 @@ extends Node
 signal is_about_to_enter_bathroom_mirror
 
 
+var shards_collected := 0
+
 var has_seen_bathroom_mirror_dialogue := false
 var has_seen_entrance_mirror_dialogue := false
 var has_seen_full_length_mirror_dialogue := false

@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://dq3g4xws8dtdj"]
+
+[ext_resource type="Texture2D" uid="uid://c707pcy17g3h7" path="res://icon.svg" id="1_c82x2"]
+[ext_resource type="Script" uid="uid://45dje44oluqm" path="res://scenes/items/shard.gd" id="1_mvveq"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mvveq"]
+radius = 11.0
+
+[node name="Shard" type="Area2D" unique_id=845634283]
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("1_mvveq")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=407122220]
+modulate = Color(1.353256, 1.353256, 0, 1)
+scale = Vector2(0.17, 0.17)
+texture = ExtResource("1_c82x2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1167651268]
+shape = SubResource("CircleShape2D_mvveq")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
