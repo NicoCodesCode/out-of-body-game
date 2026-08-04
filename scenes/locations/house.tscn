@@ -84,7 +84,7 @@ size = Vector2(39, 93)
 size = Vector2(35, 71)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wl1cs"]
-size = Vector2(20, 26)
+size = Vector2(20, 42)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_argpr"]
 size = Vector2(46, 7)
@@ -102,7 +102,7 @@ size = Vector2(39, 57)
 size = Vector2(25, 35)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6qvyu"]
-size = Vector2(47.25, 61)
+size = Vector2(47.25, 54)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sbcrw"]
 size = Vector2(170.125, 9.5)
@@ -120,31 +120,35 @@ size = Vector2(102.00781, 27)
 size = Vector2(87.99609, 22.96875)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k0eul"]
-size = Vector2(84.00391, 19.96875)
+size = Vector2(84.00391, 33.984375)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k5vgw"]
 size = Vector2(45.001953, 85)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l277p"]
+size = Vector2(23, 11.25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cxdi4"]
+size = Vector2(36.5, 5.625)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oxxgg"]
 size = Vector2(28, 22)
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_l277p"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_u77ru"]
 radius = 16.0
-height = 62.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3wvpa"]
 size = Vector2(42, 6)
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cxdi4"]
-radius = 23.0
-height = 84.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_ncapa"]
+radius = 22.090721
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d3ha2"]
 size = Vector2(42, 7.75)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3ignn"]
 radius = 20.5
-height = 92.0
+height = 76.0
 
 [node name="House" type="Node2D" unique_id=1268704300 node_paths=PackedStringArray("music", "player")]
 script = ExtResource("1_ncapa")
@@ -152,6 +156,7 @@ music = NodePath("Music")
 player = NodePath("Player")
 
 [node name="FloorAndWalls" type="Sprite2D" parent="." unique_id=904283691]
+z_index = -2
 scale = Vector2(2, 2)
 texture = ExtResource("1_muy41")
 
@@ -235,7 +240,7 @@ position = Vector2(-98, 74.5)
 shape = SubResource("RectangleShape2D_hwqle")
 
 [node name="Furniture" type="StaticBody2D" parent="." unique_id=1036663409]
-z_index = 1
+z_index = -1
 
 [node name="Sprite2D" type="Sprite2D" parent="Furniture" unique_id=2124534529]
 scale = Vector2(2, 2)
@@ -273,7 +278,7 @@ shape = SubResource("RectangleShape2D_ioci0")
 debug_color = Color(1, 0.6, 0.69803923, 0.41960785)
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="Furniture" unique_id=126890846]
-position = Vector2(-155, 237)
+position = Vector2(-155, 229)
 shape = SubResource("RectangleShape2D_wl1cs")
 debug_color = Color(1, 0.6, 0.69803923, 0.41960785)
 
@@ -303,7 +308,7 @@ shape = SubResource("RectangleShape2D_5v0f0")
 debug_color = Color(1, 0.6, 0.69803923, 0.41960785)
 
 [node name="CollisionShape2D11" type="CollisionShape2D" parent="Furniture" unique_id=2071216602]
-position = Vector2(-33.625, -140.5)
+position = Vector2(-33.625, -137)
 shape = SubResource("RectangleShape2D_6qvyu")
 debug_color = Color(1, 0.6, 0.69803923, 0.41960785)
 
@@ -333,13 +338,23 @@ shape = SubResource("RectangleShape2D_ueln8")
 debug_color = Color(1, 0.6, 0.69803923, 0.41960785)
 
 [node name="CollisionShape2D16" type="CollisionShape2D" parent="Furniture" unique_id=234876184]
-position = Vector2(69, 269)
+position = Vector2(69, 261.9922)
 shape = SubResource("RectangleShape2D_k0eul")
 debug_color = Color(1, 0.6, 0.69803923, 0.41960785)
 
 [node name="CollisionShape2D17" type="CollisionShape2D" parent="Furniture" unique_id=1554417708]
 position = Vector2(-178.50098, 144.5)
 shape = SubResource("RectangleShape2D_k5vgw")
+debug_color = Color(1, 0.6, 0.69803923, 0.41960785)
+
+[node name="CollisionShape2D19" type="CollisionShape2D" parent="Furniture" unique_id=1481198455]
+position = Vector2(-39.5, -175.375)
+shape = SubResource("RectangleShape2D_l277p")
+debug_color = Color(1, 0.6, 0.69803923, 0.41960785)
+
+[node name="CollisionShape2D20" type="CollisionShape2D" parent="Furniture" unique_id=685546369]
+position = Vector2(-39.25, -167.1875)
+shape = SubResource("RectangleShape2D_cxdi4")
 debug_color = Color(1, 0.6, 0.69803923, 0.41960785)
 
 [node name="Ceilings" type="Sprite2D" parent="." unique_id=75450972]
@@ -366,8 +381,8 @@ dialogue_resource = ExtResource("9_4q4so")
 dialogue_start = "bathroom_mirror"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Mirrors/BathroomMirror/Actionable" unique_id=1047190615]
-position = Vector2(-130, -226)
-shape = SubResource("CapsuleShape2D_l277p")
+position = Vector2(-130, -238)
+shape = SubResource("CircleShape2D_u77ru")
 debug_color = Color(0, 0.6, 0, 0.41960785)
 
 [node name="EntranceMirror" type="StaticBody2D" parent="Mirrors" unique_id=863532225]
@@ -393,8 +408,8 @@ dialogue_resource = ExtResource("9_4q4so")
 dialogue_start = "entrance_mirror"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Mirrors/EntranceMirror/Actionable" unique_id=1522278316]
-position = Vector2(155, -45)
-shape = SubResource("CapsuleShape2D_cxdi4")
+position = Vector2(156, -71)
+shape = SubResource("CircleShape2D_ncapa")
 debug_color = Color(0, 0.6, 0, 0.41960785)
 
 [node name="FullLengthMirror" type="StaticBody2D" parent="Mirrors" unique_id=1529715403]

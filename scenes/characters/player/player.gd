@@ -1,6 +1,9 @@
 extends CharacterBody2D
 
 
+@export var animation_tree: AnimationTree
+@onready var state_machine = animation_tree.get("parameters/playback")
+
 @export var interaction_detector: Area2D
 
 const SPEED = 150.0
@@ -17,6 +20,8 @@ var is_in_safe_zone := false
 func _ready() -> void:
 	DialogueManager.dialogue_started.connect(_on_dialogue_started)
 	DialogueManager.dialogue_ended.connect(_on_dialogue_ended)
+	
+	animation_tree.active = true
 
 
 func _unhandled_input(_event: InputEvent) -> void:
@@ -29,7 +34,18 @@ func _unhandled_input(_event: InputEvent) -> void:
 
 func _physics_process(delta: float) -> void:
 	var input_direction := Input.get_vector("move_left", "move_right", "move_up", "move_down")
-	velocity = input_direction * SPEED
+	
+	if input_direction != Vector2.ZERO:
+		velocity = input_direction * SPEED
+		
+		animation_tree.set("parameters/Idle/blend_position", input_direction)
+		animation_tree.set("parameters/Walk/blend_position", input_direction)
+		
+		state_machine.travel("Walk")
+	else:
+		velocity = Vector2.ZERO
+		state_machine.travel("Idle")
+	
 	move_and_slide()
 	
 	_manage_soul_presence(delta)
@@ -37,6 +53,7 @@ func _physics_process(delta: float) -> void:
 
 func _stop_player() -> void:
 	velocity = Vector2.ZERO
+	state_machine.travel("Idle")
 	set_physics_process(false)
 
 
