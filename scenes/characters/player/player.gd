@@ -64,4 +64,5 @@ func _on_dialogue_ended(_resource: DialogueResource) -> void:
 
 
 func _on_spirit_player_caught() -> void:
+	State.shards_collected = 0
 	_stop_player()

@@ -4,6 +4,9 @@ extends Node
 @warning_ignore("unused_signal")
 signal is_about_to_enter_bathroom_mirror
 
+@warning_ignore("unused_signal")
+signal collected_shard
+
 
 var shards_collected := 0
 

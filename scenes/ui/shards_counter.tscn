@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://dy0fcrbrqwvxh"]
+
+[ext_resource type="Script" uid="uid://b8mhu1i1hhidd" path="res://scenes/ui/shards_counter.gd" id="1_iivnh"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iivnh"]
+content_margin_left = 30.0
+content_margin_top = 5.0
+content_margin_right = 30.0
+content_margin_bottom = 5.0
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+corner_radius_bottom_left = 30
+
+[node name="ShardsCounter" type="CanvasLayer" unique_id=1597338635 node_paths=PackedStringArray("label")]
+script = ExtResource("1_iivnh")
+label = NodePath("Control/PanelContainer/Label")
+
+[node name="Control" type="Control" parent="." unique_id=1501556071]
+layout_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+grow_horizontal = 0
+
+[node name="PanelContainer" type="PanelContainer" parent="Control" unique_id=543904486]
+layout_mode = 0
+offset_left = -109.0
+offset_bottom = 55.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_iivnh")
+
+[node name="Label" type="Label" parent="Control/PanelContainer" unique_id=36352715]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "0/5"
