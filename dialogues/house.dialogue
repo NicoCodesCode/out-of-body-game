@@ -21,6 +21,7 @@ Stick your hand in and probably risk your life?
 	This is an awful idea.
 	You try to pull back, but something in the dark grips your wrist.
 	In a violent flash, you are dragged inside.
+	$> State.entered_bathroom_mirror.emit()
 - Better not mess with the unknown
 	You remember your mom's advice about not touching strange spatial anomalies before checking your other options.
 	You take a polite step back and decide to look for a safer exit.

@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://jkfqunawtskv"]
 
 [ext_resource type="Texture2D" uid="uid://bid17xj0a8tjl" path="res://assets/art/Home/Home-01.png" id="1_muy41"]
+[ext_resource type="Script" uid="uid://ci1seq3copmug" path="res://scenes/locations/house.gd" id="1_ncapa"]
 [ext_resource type="Texture2D" uid="uid://doxen5rq28ba6" path="res://assets/art/Home/Home-02.png" id="2_ma1s3"]
 [ext_resource type="Texture2D" uid="uid://dt8me42fft36t" path="res://assets/art/Home/Bed/Bed-01.png" id="3_w8n4a"]
 [ext_resource type="Texture2D" uid="uid://crmyjg3f2ed06" path="res://assets/art/Home/Bed/Bed-02.png" id="4_pjf7i"]
@@ -14,7 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://7ytrj2a53hoa" path="res://assets/art/Home/Mirror/m-01-f-2.png" id="10_4q4so"]
 [ext_resource type="Texture2D" uid="uid://by2uhghfm02i5" path="res://assets/art/Home/Mirror/m-01-f-1.png" id="11_vk74t"]
 [ext_resource type="AudioStream" uid="uid://dy5dqwwlk843u" path="res://assets/sound/music/shattered-glass.ogg" id="14_4q4so"]
-[ext_resource type="Script" uid="uid://bn1fes78yg6ac" path="res://scenes/locations/house_music.gd" id="15_vk74t"]
+[ext_resource type="PackedScene" uid="uid://bc5c5umy3y0t4" path="res://scenes/characters/player/player.tscn" id="14_u77ru"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_muy41"]
 size = Vector2(87, 59)
@@ -145,7 +146,10 @@ size = Vector2(42, 7.75)
 radius = 20.5
 height = 92.0
 
-[node name="House" type="Node2D" unique_id=1268704300]
+[node name="House" type="Node2D" unique_id=1268704300 node_paths=PackedStringArray("music", "player")]
+script = ExtResource("1_ncapa")
+music = NodePath("Music")
+player = NodePath("Player")
 
 [node name="FloorAndWalls" type="Sprite2D" parent="." unique_id=904283691]
 scale = Vector2(2, 2)
@@ -420,8 +424,10 @@ position = Vector2(-5.5, -47)
 shape = SubResource("CapsuleShape2D_3ignn")
 debug_color = Color(0, 0.6, 0, 0.41960785)
 
-[node name="HouseMusic" type="AudioStreamPlayer" parent="." unique_id=1285025663]
+[node name="Player" parent="." unique_id=418808476 instance=ExtResource("14_u77ru")]
+position = Vector2(-137, 169)
+
+[node name="Music" type="AudioStreamPlayer" parent="." unique_id=1285025663]
 stream = ExtResource("14_4q4so")
 autoplay = true
 bus = &"Music"
-script = ExtResource("15_vk74t")

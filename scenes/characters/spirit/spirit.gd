@@ -17,7 +17,7 @@ signal player_caught
 @export var vision_half_angle_deg: float = 25.0
 @export var personal_radius: float = 40.0
 @export var blend_angle_deg: float = 20.0
-@export var shape_segments: int = 48
+@export var shape_segments: int = 24
 
 @export_flags_2d_physics var wall_collision_mask: int = 1
 

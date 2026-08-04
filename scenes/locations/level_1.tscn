@@ -1,12 +1,15 @@
 [gd_scene format=4 uid="uid://d0yv43c05ghf5"]
 
 [ext_resource type="TileSet" uid="uid://dlqvctlmfmhrl" path="res://resources/walls.tres" id="1_q3c5p"]
+[ext_resource type="Script" uid="uid://dni3q5cub7u0p" path="res://scenes/locations/level_1.gd" id="1_v6x2r"]
 [ext_resource type="PackedScene" uid="uid://dq3g4xws8dtdj" path="res://scenes/items/shard.tscn" id="4_f1jnu"]
 [ext_resource type="PackedScene" uid="uid://bc5c5umy3y0t4" path="res://scenes/characters/player/player.tscn" id="4_y8lvv"]
 [ext_resource type="PackedScene" uid="uid://doe1ylf62u5yo" path="res://scenes/characters/spirit/spirit.tscn" id="5_f1jnu"]
 [ext_resource type="PackedScene" uid="uid://dy0fcrbrqwvxh" path="res://scenes/ui/shards_counter.tscn" id="5_v6x2r"]
 
-[node name="Level1" type="Node2D" unique_id=1125686533]
+[node name="Level1" type="Node2D" unique_id=1125686533 node_paths=PackedStringArray("player")]
+script = ExtResource("1_v6x2r")
+player = NodePath("Player")
 
 [node name="GroundLayer" type="TileMapLayer" parent="." unique_id=1185026827]
 z_index = -10
@@ -37,7 +40,7 @@ position = Vector2(446, 613)
 position = Vector2(592, 283)
 
 [node name="Player" parent="." unique_id=418808476 instance=ExtResource("4_y8lvv")]
-position = Vector2(-57, 423)
+position = Vector2(-53, 422)
 
 [node name="Spirits" type="Node2D" parent="." unique_id=356807781]
 position = Vector2(820, 126)

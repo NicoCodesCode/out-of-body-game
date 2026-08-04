@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Sleep"
-run/main_scene="uid://dn2exvnsbkoch"
+run/main_scene="uid://jkfqunawtskv"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -22,6 +22,7 @@ buses/default_bus_layout="uid://bn1fpoxf5px7f"
 [autoload]
 
 State="*uid://btqtkhto7mtbt"
+GameManager="*uid://dn2exvnsbkoch"
 DialogueManager="*uid://c3rodes2l3gxb"
 
 [dialogue_manager]

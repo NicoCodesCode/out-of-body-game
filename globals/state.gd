@@ -5,6 +5,9 @@ extends Node
 signal is_about_to_enter_bathroom_mirror
 
 @warning_ignore("unused_signal")
+signal entered_bathroom_mirror
+
+@warning_ignore("unused_signal")
 signal collected_shard
 
 
