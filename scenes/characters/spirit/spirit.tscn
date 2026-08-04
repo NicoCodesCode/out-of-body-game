@@ -6,12 +6,13 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_dy322"]
 radius = 10.770329
 
-[node name="Spirit" type="CharacterBody2D" unique_id=1294832527 node_paths=PackedStringArray("vision_pivot", "sprite", "vision_outline", "vision_collision")]
+[node name="Spirit" type="CharacterBody2D" unique_id=1294832527 node_paths=PackedStringArray("vision_pivot", "sprite", "vision_outline", "vision_fill", "vision_collision")]
 collision_layer = 8
 script = ExtResource("1_dy322")
 vision_pivot = NodePath("VisionPivot")
 sprite = NodePath("Sprite2D")
 vision_outline = NodePath("VisionPivot/VisionCone/Line2D")
+vision_fill = NodePath("VisionPivot/VisionCone/VisionFill")
 vision_collision = NodePath("VisionPivot/VisionCone/CollisionPolygon2D")
 vision_half_angle_deg = 20.0
 personal_radius = 30.0
@@ -33,6 +34,8 @@ collision_layer = 32
 collision_mask = 4
 
 [node name="Line2D" type="Line2D" parent="VisionPivot/VisionCone" unique_id=1417025614]
+
+[node name="VisionFill" type="Polygon2D" parent="VisionPivot/VisionCone" unique_id=1359028433]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="VisionPivot/VisionCone" unique_id=194129809]
 polygon = PackedVector2Array(0, 0, 150, -30, 150, 30)

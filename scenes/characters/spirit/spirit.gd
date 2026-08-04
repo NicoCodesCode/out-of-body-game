@@ -10,6 +10,7 @@ signal player_caught
 @export var sprite: Sprite2D
 
 @export var vision_outline: Line2D
+@export var vision_fill: Polygon2D
 @export var vision_collision: CollisionPolygon2D
 
 @export var vision_range: float = 150.0
@@ -35,6 +36,14 @@ var speed := 60.0
 func _ready() -> void:
 	_target_position = marker_b.global_position
 	_build_vision_collision()
+	
+	if vision_outline:
+		vision_outline.z_index = -5
+		vision_outline.default_color = Color.WHITE
+		vision_outline.width = 3.0
+	if vision_fill:
+		vision_fill.z_index = -4
+		vision_fill.color = Color.BLACK
 
 
 func _radius_for_local_angle(angle: float, half_fov: float, blend: float) -> float:
@@ -52,11 +61,11 @@ func _radius_for_local_angle(angle: float, half_fov: float, blend: float) -> flo
 func _build_vision_collision() -> void:
 	if not vision_collision:
 		return
-
+	
 	var half_fov := deg_to_rad(vision_half_angle_deg)
 	var blend := deg_to_rad(blend_angle_deg)
 	var points := PackedVector2Array()
-
+	
 	for i in shape_segments:
 		var angle := (TAU * i / shape_segments) - PI
 		var radius := _radius_for_local_angle(angle, half_fov, blend)
@@ -65,47 +74,50 @@ func _build_vision_collision() -> void:
 	vision_collision.polygon = points
 
 
-func _update_vision_outline() -> void:
-	if not vision_outline:
+func _update_vision_shape() -> void:
+	if not (vision_outline or vision_fill):
 		return
-
+	
 	var space_state := get_world_2d().direct_space_state
 	var half_fov := deg_to_rad(vision_half_angle_deg)
 	var blend := deg_to_rad(blend_angle_deg)
 	var points := PackedVector2Array()
-
+	
 	for i in shape_segments:
 		var local_angle := (TAU * i / shape_segments) - PI
 		var max_radius := _radius_for_local_angle(local_angle, half_fov, blend)
-
+		
 		var global_dir := Vector2.RIGHT.rotated(vision_pivot.global_rotation + local_angle)
 		var target := global_position + global_dir * max_radius
-
+	
 		var query := PhysicsRayQueryParameters2D.create(global_position, target)
 		query.collision_mask = wall_collision_mask
 		query.exclude = [self]
 		var result := space_state.intersect_ray(query)
-
+		
 		var point_global: Vector2 = result.position if result else target
-		points.append(vision_outline.to_local(point_global))
-
-	points.append(points[0])
-	vision_outline.points = points
-	vision_outline.default_color = Color.WHITE
-	vision_outline.width = 2.0
+		points.append(vision_outline.to_local(point_global) if vision_outline else vision_fill.to_local(point_global))
+	
+	if vision_fill:
+		vision_fill.polygon = points
+	
+	if vision_outline:
+		var outline_points := points.duplicate()
+		outline_points.append(points[0])
+		vision_outline.points = outline_points
 
 
 func _physics_process(_delta: float) -> void:
 	if _is_alerted:
 		return
-
+	
 	var direction := global_position.direction_to(_target_position)
 	velocity = direction * speed
 	move_and_slide()
-
+	
 	if velocity.length() > 0.0:
 		vision_pivot.rotation = velocity.angle()
-
+		
 		if velocity.x < -1.0:
 			sprite.flip_h = true
 		elif velocity.x > 1.0:
@@ -113,9 +125,9 @@ func _physics_process(_delta: float) -> void:
 
 	if global_position.distance_to(_target_position) < ARRIVAL_DISTANCE:
 		_target_position = marker_a.global_position if _target_position == marker_b.global_position else marker_b.global_position
-
-	_update_vision_outline()
-
+	
+	_update_vision_shape()
+	
 	if _player_in_area and _has_line_of_sight_to_player():
 		_catch_player()
 
@@ -123,7 +135,7 @@ func _physics_process(_delta: float) -> void:
 func _has_line_of_sight_to_player() -> bool:
 	if not _player_ref:
 		return false
-
+	
 	var space_state := get_world_2d().direct_space_state
 	var query := PhysicsRayQueryParameters2D.create(
 		global_position,
@@ -131,7 +143,7 @@ func _has_line_of_sight_to_player() -> bool:
 	)
 	query.collision_mask = wall_collision_mask
 	query.exclude = [self]
-
+	
 	var result := space_state.intersect_ray(query)
 	return result.is_empty()
 
@@ -151,7 +163,7 @@ func _on_vision_cone_body_exited(body: Node2D) -> void:
 func _catch_player() -> void:
 	if _is_alerted:
 		return
-
+	
 	_is_alerted = true
 	velocity = Vector2.ZERO
 	player_caught.emit()
