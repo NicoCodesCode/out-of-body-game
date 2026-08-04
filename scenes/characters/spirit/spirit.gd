@@ -12,14 +12,12 @@ signal player_caught
 @export var vision_outline: Line2D
 @export var vision_collision: CollisionPolygon2D
 
-# --- Vision shape tuning ---
 @export var vision_range: float = 150.0
 @export var vision_half_angle_deg: float = 25.0
 @export var personal_radius: float = 40.0
 @export var blend_angle_deg: float = 20.0
 @export var shape_segments: int = 48
 
-# Physics layer the walls live on (matches "FloorAndWalls" = layer 1 in your project)
 @export_flags_2d_physics var wall_collision_mask: int = 1
 
 const ARRIVAL_DISTANCE: float = 16.0
@@ -36,7 +34,7 @@ var speed := 60.0
 
 func _ready() -> void:
 	_target_position = marker_b.global_position
-	_build_vision_collision()  # static broad-phase shape, built once
+	_build_vision_collision()
 
 
 func _radius_for_local_angle(angle: float, half_fov: float, blend: float) -> float:
@@ -45,7 +43,7 @@ func _radius_for_local_angle(angle: float, half_fov: float, blend: float) -> flo
 		return vision_range
 	elif abs_angle <= half_fov + blend:
 		var t := (abs_angle - half_fov) / blend
-		t = t * t * (3.0 - 2.0 * t)  # smoothstep, avoids a visible kink
+		t = t * t * (3.0 - 2.0 * t)
 		return lerp(vision_range, personal_radius, t)
 	else:
 		return personal_radius
@@ -68,8 +66,6 @@ func _build_vision_collision() -> void:
 
 
 func _update_vision_outline() -> void:
-	# Rebuilt every frame: casts a ray for each outline point and clips it
-	# against walls, so the VISUAL shape can never appear to pass through them.
 	if not vision_outline:
 		return
 
@@ -93,7 +89,7 @@ func _update_vision_outline() -> void:
 		var point_global: Vector2 = result.position if result else target
 		points.append(vision_outline.to_local(point_global))
 
-	points.append(points[0])  # close the loop
+	points.append(points[0])
 	vision_outline.points = points
 	vision_outline.default_color = Color.WHITE
 	vision_outline.width = 2.0
